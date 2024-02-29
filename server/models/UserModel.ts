@@ -1,0 +1,1 @@
+const[result] = await connection.query(`SELECT * FROM users WHERE user_id = ${id}`)
