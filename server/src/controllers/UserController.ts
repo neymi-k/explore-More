@@ -1,5 +1,5 @@
 import e, {Request, Response} from "express"
-import {connection} from "../database/config"
+import {connection} from "../../database/config"
 
 const UserController = {
     getAllUsers: async (req: Request,res: Response) => {
