@@ -1,4 +1,4 @@
-import {Request, Response} from "express"
+import e, {Request, Response} from "express"
 import {connection} from "../database/config"
 
 const UserController = {
@@ -44,3 +44,5 @@ const UserController = {
         }
     },
 }
+
+export default  UserController
