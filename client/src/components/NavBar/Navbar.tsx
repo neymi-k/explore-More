@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo_explore_more.png';
 
+
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between p-5 bg-amber-500">
-      <div className="lg:hidden flex justify-between w-full">
+    <nav className="relative flex items-center justify-between p-5 bg-amber-500 gap-20">
+      <div className="lg:hidden flex justify-between gap-10 w-full">
         <button
           className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white mr-4"
           onClick={() => setIsOpen(!isOpen)}
@@ -16,19 +17,24 @@ function NavBar() {
           </svg>
         </button>
       </div>
-      <div className="lg:flex lg:items-center lg:justify-between w-full">
-        <div className="hidden lg:flex lg:items-center w-full justify-between">
-          <a href="#Home" className="text-orange px-2 flex-grow hover:text-white">Home</a>
-          <a href="#Form" className="text-orange px-2 flex-grow hover:text-white">Contac</a>
-          <a href="/login" className="text-orange px-2 flex-grow hover:text-white">Sing Out</a>
+      <div className="lg:flex lg:items-center  w-full">
+        <div className="hidden lg:flex gap-10 p-5 mr-20">
+          <a href="#Home" className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200">Home</a>
+          <a href="#Form" className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200">Contac</a>
+          <a href="/login" className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200">Sing Out</a>
+          <a href="/" className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200">Add Product</a>
         </div>
-        <img src={logo} alt="Logo" className="w-24 h-auto lg:w-auto lg:h-11" />
+        <img src={logo} alt="Logo" className="w-24 h-50" />
       </div>
-      <div className={`${isOpen ? 'block' : 'hidden'} lg:hidden`}>
-        <a href="#Home" className="block text-orange px-2 hover:text-white">Home</a>
-        <a href="#Form" className="block text-orange px-2 hover:text-white">Contac</a>
-        <a href="/login" className="block text-orange px-2 hover:text-white">Sing Out</a>
-      </div>
+
+      <div className={`fixed inset-0 bg-black bg-opacity-50 ${isOpen ? 'block' : 'hidden'}`} onClick={() => setIsOpen(false)}>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber p-4 rounded text-center">
+        <a href="#Home" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Home</a>
+        <a href="#Form" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Contac</a>
+        <a href="/login" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Sing Out</a>
+        <a href="/" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Add Product</a>
+  </div>
+  </div>
     </nav>
   );
 }

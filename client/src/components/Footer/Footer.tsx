@@ -3,6 +3,8 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { SlSocialTwitter } from "react-icons/sl";
+import { SlSocialLinkedin } from "react-icons/sl";
+
 
 function Footer() {
   return (
@@ -19,16 +21,20 @@ function Footer() {
         </div>
 
         <div className="flex justify-center gap-7 p-8 hover:text-white">
-          <a href="#" className="hover:text-orange-500">
-            <BsFacebook className="h-10 w-8 text-amber-500 hover:text-white" />
-          </a>
-          <a href="#" className="hover:text-orange-500">
-            <SlSocialTwitter className="h-10 w-8 text-amber-500 hover:text-white" />
-          </a>
-          <a href="#" className="hover:text-orange-500">
-            <BsInstagram className="h-10 w-8 text-amber-500 hover:text-white" />
-          </a>
-        </div>
+ <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+    <BsFacebook className="h-10 w-8 text-amber-500 hover:text-white" />
+ </a>
+ <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+    <SlSocialTwitter className="h-10 w-8 text-amber-500 hover:text-white" />
+ </a>
+ <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+    <BsInstagram className="h-10 w-8 text-amber-500 hover:text-white" />
+ </a>
+ <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+    <SlSocialLinkedin className="h-10 w-8 text-amber-500 hover:text-white" />
+ </a>
+</div>
+
         <div>
         </div>
       </div>
@@ -39,7 +45,6 @@ function Footer() {
         <p>Accessibility</p>
       </div>
       <h4 className='flex justify-center p-5'>Copyright ©2024 Company| All rights reserved</h4>
-
     </footer>
   );
 }
