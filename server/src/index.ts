@@ -14,8 +14,6 @@ app.use('/api', rootRouter)
 
 export const prismaClient = new PrismaClient({log: ['query']})
 
-
-
 app.use(errorMiddleware)
 
 app.listen(PORT, () => {
