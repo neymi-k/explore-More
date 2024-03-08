@@ -10,9 +10,16 @@ const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div
+      className="flex justify-center items-center h-screen"
+      style={{
+        backgroundImage: "url('/fondo2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="bg-white p-8 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-4">
+        <h1 className="text-2xl text-red-700 mb-4 text-center">
           {isLogin ? "Login" : "Register"}
         </h1>
         {isLogin ? (
@@ -32,6 +39,12 @@ const AuthPage: React.FC = () => {
             setPassword={() => {}}
           />
         )}
+        <button
+          type="submit"
+          className="w-full  text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline bg-red-700 hover:bg-red-600"
+        >
+          {isLogin ? "Log In" : "Sign Up"}
+        </button>
         <p className="mt-4 text-sm text-center">
           {isLogin ? "Don't have an account? " : "Already have an account? "}
           <span className="text-blue-500 cursor-pointer" onClick={toggleForm}>
