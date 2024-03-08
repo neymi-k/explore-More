@@ -5,11 +5,14 @@ import * as jwt from 'jsonwebtoken'
 import { JWT_SECRET } from "../secrets"
 import { BadRequestException } from "../exceptions/bad-request"
 import { ErrorCode } from "../exceptions/root"
+import { UnprocessableEntity } from "../exceptions/validation"
+import { SignUpSchema } from "../schema/user"
 
 
 export const signup = async (req:Request,res:Response, next: NextFunction) => {
-
-  const {email, password, name} = req.body;
+  try {
+    SignUpSchema.parse(req.body )
+    const {email, password, name} = req.body;
 
     let user = await prismaClient.user.findFirst({where: {email}})
     if (user) {
@@ -21,8 +24,14 @@ export const signup = async (req:Request,res:Response, next: NextFunction) => {
             email,
             password: hashSync(password, 10)
         }
+        
     })
     res.json(user)
+  }
+  catch(err:any){
+    next(new UnprocessableEntity(err?.issues, "Unprocessable entity", ErrorCode.UNPROCESSABLE_ENTITY))
+  }
+   
 }
 
 export const login = async (req:Request,res:Response) => {

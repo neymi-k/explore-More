@@ -4,6 +4,7 @@
  import rootRouter from "./routes";
  import { PrismaClient } from '@prisma/client'
 import { errorMiddleware } from "./middlewares/error";
+import { SignUpSchema } from "./schema/user";
 
  const app:Express = express();
 
@@ -12,6 +13,8 @@ import { errorMiddleware } from "./middlewares/error";
 app.use('/api', rootRouter)
 
 export const prismaClient = new PrismaClient({log: ['query']})
+
+
 
 app.use(errorMiddleware)
 
