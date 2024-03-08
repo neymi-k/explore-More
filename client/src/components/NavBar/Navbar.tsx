@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo_explore_more.png';
+import { BsBackpackFill } from "react-icons/bs";
+import { FaCircleUser } from "react-icons/fa6";
+
 
 
 function NavBar() {
@@ -27,13 +30,20 @@ function NavBar() {
         <img src={logo} alt="Logo" className="w-24 h-50" />
       </div>
 
+      <BsBackpackFill className="text-8xl sm:text-8xl md:text-7xl lg:text-5xl xl:text-5xl text-white hover:text-black" />
+      <FaCircleUser className="text-8xl sm:text-8xl md:text-7xl lg:text-5xl xl:text-5xl text-white hover:text-black" />
+
+
+
       <div className={`fixed inset-0 bg-black bg-opacity-50 ${isOpen ? 'block' : 'hidden'}`} onClick={() => setIsOpen(false)}>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber p-4 rounded text-center">
-          <a href="#Home" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Home</a>
-          <a href="#Form" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Contac</a>
-          <a href="/login" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Sing Out</a>
-          <a href="/" className="block text-orange px-2 hover:text-white transform hover:scale-110 transition-transform duration-200">Add Product</a>
+          <a href="#Home" className="block text-white px-2 hover:text-amber-500 transform hover:scale-110 transition-transform duration-200">Home</a>
+          <a href="#Form" className="block text-white px-2 hover:text-amber-500 transform hover:scale-110 transition-transform duration-200">Contac</a>
+          <a href="/login" className="block text-white px-2 hover:text-amber-500 transform hover:scale-110 transition-transform duration-200">Sing Out</a>
+          <a href="/" className="block text-white px-2 hover:text-amber-500 transform hover:scale-110 transition-transform duration-200">Add Product</a>
         </div>
+
+
       </div>
     </nav>
   );
