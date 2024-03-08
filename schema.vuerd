@@ -3,8 +3,8 @@
     "version": "2.2.13",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -129.125,
-    "scrollLeft": -91.37499950329465,
+    "scrollTop": -193.09721960072235,
+    "scrollLeft": -68.62500024835269,
     "zoomLevel": 0.8,
     "show": {
       "tableComment": true,
@@ -19,7 +19,7 @@
     },
     "database": "MySQL",
     "databaseName": "",
-    "canvasType": "@vuerd/builtin-sql-ddl",
+    "canvasType": "ERD",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -184,13 +184,59 @@
               "widthDataType": 60,
               "widthDefault": 60
             }
+          },
+          {
+            "id": "9b2cb8d9-31a6-424e-b6b9-f3af18c53f58",
+            "name": "date_trip",
+            "comment": "",
+            "dataType": "DATE",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            }
+          },
+          {
+            "id": "97088dee-b3d6-4f99-9d6e-46e333b4dcb5",
+            "name": "catergory",
+            "comment": "",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 94.955078125,
+              "widthDefault": 60
+            }
           }
         ],
         "ui": {
           "active": false,
-          "left": 0,
-          "top": 0,
-          "zIndex": 566,
+          "left": 141.25,
+          "top": 15,
+          "zIndex": 36,
           "widthName": 60,
           "widthComment": 60,
           "color": "#E71717"
@@ -343,9 +389,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 41.75,
-          "top": 536.5,
-          "zIndex": 570,
+          "left": 165.5,
+          "top": 630.25,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60,
           "color": "#2196F3"
@@ -452,9 +498,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 704,
-          "top": 507.25,
-          "zIndex": 571,
+          "left": 912.75,
+          "top": 546,
+          "zIndex": 16,
           "widthName": 60,
           "widthComment": 60,
           "color": "#9E9E9E"
@@ -507,6 +553,29 @@
               "fk": false,
               "pfk": false,
               "widthName": 98.83984375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            }
+          },
+          {
+            "id": "2ff4412e-af26-4d5d-bfda-f82b0ee5608c",
+            "name": "persons_trip",
+            "comment": "",
+            "dataType": "INT",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 73.5380859375,
               "widthComment": 60,
               "widthDataType": 60,
               "widthDefault": 60
@@ -630,9 +699,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 106.25,
-          "top": 267.25,
-          "zIndex": 569,
+          "left": 171.25,
+          "top": 334.75,
+          "zIndex": 38,
           "widthName": 72.80810546875,
           "widthComment": 60,
           "color": "#A7FF00"
@@ -689,54 +758,16 @@
               "widthDataType": 60,
               "widthDefault": 60
             }
-          },
-          {
-            "id": "2ff4412e-af26-4d5d-bfda-f82b0ee5608c",
-            "name": "persons_trip",
-            "comment": "",
-            "dataType": "INT",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": false,
-              "pfk": false,
-              "widthName": 73.5380859375,
-              "widthComment": 60,
-              "widthDataType": 60,
-              "widthDefault": 60
-            }
           }
         ],
         "ui": {
           "active": false,
-          "left": 661,
-          "top": 227.25,
-          "zIndex": 561,
+          "left": 928.5,
+          "top": 282.25,
+          "zIndex": 37,
           "widthName": 117.6162109375,
           "widthComment": 60,
           "color": "#009688"
-        },
-        "visible": true
-      },
-      {
-        "id": "fd898824-10b2-42a0-8e95-f60a1cdef3e7",
-        "name": "",
-        "comment": "",
-        "columns": [],
-        "ui": {
-          "active": false,
-          "left": 219,
-          "top": 118.49999950329486,
-          "zIndex": 427,
-          "widthName": 60,
-          "widthComment": 60
         },
         "visible": true
       }
@@ -758,8 +789,8 @@
           "columnIds": [
             "cefc6af8-9768-485c-97d1-d6cc5bf9c17c"
           ],
-          "x": 264.447021484375,
-          "y": 536.5,
+          "x": 388.197021484375,
+          "y": 630.25,
           "direction": "top"
         },
         "end": {
@@ -767,8 +798,8 @@
           "columnIds": [
             "2279ad1e-bda5-4754-b7e3-ad1962d621ae"
           ],
-          "x": 334.232177734375,
-          "y": 479.75,
+          "x": 399.232177734375,
+          "y": 567.75,
           "direction": "bottom"
         },
         "constraintName": "fk_users_to_reservations",
@@ -784,8 +815,8 @@
           "columnIds": [
             "e77bb816-e210-4dee-a024-056e12f4b69f"
           ],
-          "x": 229.5556640625,
-          "y": 192,
+          "x": 370.8056640625,
+          "y": 248,
           "direction": "bottom"
         },
         "end": {
@@ -793,8 +824,8 @@
           "columnIds": [
             "66b751b5-4952-4e12-92c7-b0275d9f845b"
           ],
-          "x": 334.232177734375,
-          "y": 267.25,
+          "x": 399.232177734375,
+          "y": 334.75,
           "direction": "top"
         },
         "constraintName": "fk_trips_to_reservations",
@@ -810,8 +841,8 @@
           "columnIds": [
             "244f58a5-3e2d-4a8f-b0f8-0b6dbc9b6dc8"
           ],
-          "x": 661,
-          "y": 292.5,
+          "x": 928.5,
+          "y": 337.25,
           "direction": "left"
         },
         "end": {
@@ -819,8 +850,8 @@
           "columnIds": [
             "e0ac3538-52e9-40bd-be2d-efec1bb4019a"
           ],
-          "x": 562.21435546875,
-          "y": 373.5,
+          "x": 627.21435546875,
+          "y": 451.25,
           "direction": "right"
         },
         "constraintName": "fk_reservations_details_to_reservations",
@@ -836,8 +867,8 @@
           "columnIds": [
             "fe3d9eb3-3341-4b11-bc0f-4257021715c5"
           ],
-          "x": 704,
-          "y": 582.75,
+          "x": 912.75,
+          "y": 621.5,
           "direction": "left"
         },
         "end": {
@@ -845,8 +876,8 @@
           "columnIds": [
             "659f22de-f45b-4097-b0c2-ad3b6d4239d5"
           ],
-          "x": 487.14404296875,
-          "y": 632.5,
+          "x": 610.89404296875,
+          "y": 726.25,
           "direction": "right"
         },
         "constraintName": "fk_roles_to_users",
