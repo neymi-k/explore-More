@@ -21,19 +21,19 @@ function Footer() {
         </div>
 
         <div className="flex justify-center gap-7 p-8 hover:text-white">
- <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
-    <BsFacebook className="h-10 w-8 text-amber-500 hover:text-white" />
- </a>
- <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
-    <SlSocialTwitter className="h-10 w-8 text-amber-500 hover:text-white" />
- </a>
- <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
-    <BsInstagram className="h-10 w-8 text-amber-500 hover:text-white" />
- </a>
- <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
-    <SlSocialLinkedin className="h-10 w-8 text-amber-500 hover:text-white" />
- </a>
-</div>
+          <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+            <BsFacebook className="h-10 w-8 text-amber-500 hover:text-white" />
+          </a>
+          <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+            <SlSocialTwitter className="h-10 w-8 text-amber-500 hover:text-white" />
+          </a>
+          <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+            <BsInstagram className="h-10 w-8 text-amber-500 hover:text-white" />
+          </a>
+          <a href="#" className="hover:text-orange-500 transform hover:scale-110 transition-transform duration-200">
+            <SlSocialLinkedin className="h-10 w-8 text-amber-500 hover:text-white" />
+          </a>
+        </div>
 
         <div>
         </div>
