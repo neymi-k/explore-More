@@ -7,8 +7,8 @@ import { prismaClient } from "..";
 
 const authMiddleware = async(req:Request, res:Response, next:NextFunction) => {
     // extract token from header
-    let token:any;
-    token = req.headers.authorization
+ 
+    const token = req.headers.authorization
 
     // if token not present throw an error of unauthorized
     if(!token) {
@@ -29,11 +29,11 @@ const authMiddleware = async(req:Request, res:Response, next:NextFunction) => {
     next()
 
     }
-    catch {
+    catch(error){
         next(new UnauthorizedException('Unauthorized', ErrorCode.UNAUTHORIZED))
     }
     }
     
-export default authMiddleware 
+export default authMiddleware
 
 

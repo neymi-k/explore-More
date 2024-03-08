@@ -5,10 +5,8 @@ import * as jwt from 'jsonwebtoken'
 import { JWT_SECRET } from "../secrets"
 import { BadRequestException } from "../exceptions/bad-request"
 import { ErrorCode } from "../exceptions/root"
-import { UnprocessableEntity } from "../exceptions/validation"
 import { SignUpSchema } from "../schema/user"
 import { NotFoundException } from "../exceptions/not-found"
-
 
 
 export const signup = async (req:Request,res:Response, next: NextFunction) => {
@@ -17,7 +15,7 @@ export const signup = async (req:Request,res:Response, next: NextFunction) => {
 
     let user = await prismaClient.user.findFirst({where: {email}})
     if (user) {
-        throw new BadRequestException("User already exists", ErrorCode.USER_ALREADY_EXISTS )
+        new BadRequestException("User already exists", ErrorCode.USER_ALREADY_EXISTS )
     }
     user = await prismaClient.user.create({
         data:{
@@ -30,7 +28,6 @@ export const signup = async (req:Request,res:Response, next: NextFunction) => {
 }
 
 export const login = async (req:Request,res:Response) => {
-
     const {email, password} = req.body;
   
       let user = await prismaClient.user.findFirst({where: {email}})
@@ -48,10 +45,10 @@ export const login = async (req:Request,res:Response) => {
       res.json({user, token})
   }
   
-// /me -> return the loggedIn user
+//me -> return the loggedIn user
 
 export const me = async (req:Request, res:Response) => {
-  res.json(req.user)
+   res.json(req.user)
 }
 
 
