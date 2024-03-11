@@ -1,114 +1,7 @@
-/* import React, { useState } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
-
-const AuthPage: React.FC = () => {
-  const [isLogin, setIsLogin] = useState<boolean>(true);
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setEmailError("");
-    setPasswordError("");
-    setNameError("");
-  };
-  const validateForm = () => {
-    let isValid = true;
-
-    if (!isLogin && nameError === "") {
-      setNameError("El nombre es requerido.");
-      isValid = false;
-    } else {
-      setNameError("");
-    }
-
-    if (!emailError) {
-      setEmailError("Por favor, introduce un email válido.");
-      isValid = false;
-    } else {
-      setEmailError("");
-    }
-
-    if (!passwordError) {
-      setPasswordError("La contraseña debe tener al menos 6 caracteres.");
-      isValid = false;
-    } else {
-      setPasswordError("");
-    }
-
-    return isValid;
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      // TODO: Lógica de autenticación o registro
-      console.log("Formulario válido");
-    }
-  };
-
-  return (
-    <div
-      className="flex justify-center items-center h-screen"
-      style={{
-        backgroundImage: "url('/fondo2.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="bg-white p-8 rounded shadow-md">
-        <h1 className="text-2xl text-red-700 mb-4 text-center">
-          {isLogin ? "Login" : "Register"}
-        </h1>
-        {isLogin ? (
-          <LoginForm
-            email={email}
-            password={password}
-            setEmail={() => {}}
-            setPassword={() => {}}
-            emailError={emailError}
-            passwordError={passwordError}
-          />
-        ) : (
-          <RegisterForm
-            name={name}
-            email={email}
-            password={password}
-            setName={() => {}}
-            setEmail={() => {}}
-            setPassword={() => {}}
-            nameError={nameError}
-            emailError={emailError}
-            passwordError={passwordError}
-          />
-        )}
-        <button
-          type="submit"
-          className="w-full  text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline bg-red-700 hover:bg-red-600"
-          onClick={handleSubmit}
-        >
-          {isLogin ? "Log In" : "Sign Up"}
-        </button>
-        <p className="mt-4 text-sm text-center">
-          {isLogin ? "Don't have an account? " : "Already have an account? "}
-          <span className="text-blue-500 cursor-pointer" onClick={toggleForm}>
-            {isLogin ? "Sign Up" : "Log In"}
-          </span>
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default AuthPage; */
-
 import { useState, useCallback, ChangeEvent } from "react";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { login, register } from "../../services/auth.service";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -121,6 +14,9 @@ const AuthPage = () => {
   const [passwordError, setPasswordError] = useState("");
   const [nameError, setNameError] = useState("");
 
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [redirectTo, setRedirectTo] = useState("");
+
   const validateForm = () => {
     let isValid = true;
 
@@ -131,25 +27,22 @@ const AuthPage = () => {
       setNameError("");
     }
 
-    if (!email.includes("@") || !email.includes(".")) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       setEmailError("Por favor, introduce un email válido.");
       isValid = false;
     } else {
       setEmailError("");
     }
 
-    if (password.length < 6) {
-      setPasswordError("La contraseña debe tener al menos 6 caracteres.");
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "La contraseña debe tener al menos 6 caracteres, contener al menos una mayúscula, una minúscula y un número."
+      );
       isValid = false;
     } else {
       setPasswordError("");
-    }
-
-    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
-      setPasswordError(
-        "La contraseña debe contener al menos una mayúscula, una minúscula y un número."
-      );
-      isValid = false;
     }
 
     return isValid;
@@ -167,11 +60,31 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      // TODO la lógica de autenticación o registro
-      console.log("Formulario válido");
+      try {
+        let response;
+        if (isLogin) {
+          response = await login(email, password);
+          console.log("Usuario logueado:", response);
+          setShouldRedirect(true);
+          setRedirectTo("/profile");
+        } else {
+          response = await register(name, email, password);
+          console.log("Usuario registrado:", response);
+          alert("Registro exitoso. Ahora puedes iniciar sesión.");
+          setIsLogin(true);
+          setEmail("");
+          setPassword("");
+          setName("");
+          setEmailError("");
+          setPasswordError("");
+          setNameError("");
+        }
+      } catch (error) {
+        console.log("Error en el envío del formulario:", error);
+      }
     }
   };
 
@@ -199,7 +112,8 @@ const AuthPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-white p-8 rounded shadow-md">
+      {shouldRedirect && <Navigate to={redirectTo} />}
+      <div className="bg-white p-8 rounded shadow-md w-4/5 md:w-1/2 lg:w-1/3 ">
         <h1 className="text-2xl mb-4 text-red-700 text-center">
           {isLogin ? "Login" : "Register"}
         </h1>
