@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+/* import React, { ChangeEvent } from "react";
 import InputField from "../InputField/InputField";
 
 interface RegisterFormProps {
@@ -25,6 +25,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   passwordError,
 }) => {
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log("Valor del campo Nombre:", e.target.value);
     setName(e.target.value);
   };
 
@@ -64,3 +65,4 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
 };
 
 export default RegisterForm;
+ */

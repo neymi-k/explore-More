@@ -1,4 +1,4 @@
-// InputField.tsx
+/* // InputField.tsx
 import React, { ChangeEvent } from "react";
 
 interface InputFieldProps {
@@ -16,6 +16,15 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange,
   error,
 }) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    const event = {
+      target: {
+        value: newValue,
+      },
+    } as ChangeEvent<HTMLInputElement>;
+    onChange(event);
+  };
   return (
     <div className="mb-4">
       <label
@@ -28,7 +37,7 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         id={label}
         value={value}
-        onChange={onChange}
+        onChange={handleInputChange}
         className="mt-1 block w-full px-3 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
       />
       {error && <p className="text-red-500 text-xs">{error}</p>}
@@ -37,3 +46,4 @@ const InputField: React.FC<InputFieldProps> = ({
 };
 
 export default InputField;
+ */

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+/* import React, { ChangeEvent } from "react";
 import InputField from "../InputField/InputField";
 
 interface LoginFormProps {
@@ -47,3 +47,4 @@ const LoginForm: React.FC<LoginFormProps> = ({
 };
 
 export default LoginForm;
+ */

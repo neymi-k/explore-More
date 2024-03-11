@@ -1,12 +1,55 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setEmailError("");
+    setPasswordError("");
+    setNameError("");
+  };
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!isLogin && nameError === "") {
+      setNameError("El nombre es requerido.");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
+
+    if (!emailError) {
+      setEmailError("Por favor, introduce un email válido.");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (!passwordError) {
+      setPasswordError("La contraseña debe tener al menos 6 caracteres.");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // TODO: Lógica de autenticación o registro
+      console.log("Formulario válido");
+    }
   };
 
   return (
@@ -24,24 +67,30 @@ const AuthPage: React.FC = () => {
         </h1>
         {isLogin ? (
           <LoginForm
-            email=""
-            password=""
+            email={email}
+            password={password}
             setEmail={() => {}}
             setPassword={() => {}}
+            emailError={emailError}
+            passwordError={passwordError}
           />
         ) : (
           <RegisterForm
-            name=""
-            email=""
-            password=""
+            name={name}
+            email={email}
+            password={password}
             setName={() => {}}
             setEmail={() => {}}
             setPassword={() => {}}
+            nameError={nameError}
+            emailError={emailError}
+            passwordError={passwordError}
           />
         )}
         <button
           type="submit"
           className="w-full  text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline bg-red-700 hover:bg-red-600"
+          onClick={handleSubmit}
         >
           {isLogin ? "Log In" : "Sign Up"}
         </button>
@@ -56,9 +105,10 @@ const AuthPage: React.FC = () => {
   );
 };
 
-export default AuthPage;
+export default AuthPage; */
 
-/* import { useState } from "react";
+import { useState, useCallback, ChangeEvent } from "react";
+import React from "react";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -81,7 +131,7 @@ const AuthPage = () => {
       setNameError("");
     }
 
-    if (!email.includes("@")) {
+    if (!email.includes("@") || !email.includes(".")) {
       setEmailError("Por favor, introduce un email válido.");
       isValid = false;
     } else {
@@ -93,6 +143,13 @@ const AuthPage = () => {
       isValid = false;
     } else {
       setPasswordError("");
+    }
+
+    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
+      setPasswordError(
+        "La contraseña debe contener al menos una mayúscula, una minúscula y un número."
+      );
+      isValid = false;
     }
 
     return isValid;
@@ -110,7 +167,7 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleSubmit = (e = String) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       // TODO la lógica de autenticación o registro
@@ -118,10 +175,32 @@ const AuthPage = () => {
     }
   };
 
+  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  }, []);
+
+  const handleEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  }, []);
+
+  const handlePasswordChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setPassword(e.target.value);
+    },
+    []
+  );
+
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div
+      className="flex justify-center items-center h-screen"
+      style={{
+        backgroundImage: "url('/fondo2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="bg-white p-8 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-4 bg-red-200">
+        <h1 className="text-2xl mb-4 text-red-700 text-center">
           {isLogin ? "Login" : "Register"}
         </h1>
         <form onSubmit={handleSubmit}>
@@ -137,7 +216,7 @@ const AuthPage = () => {
                 type="text"
                 id="name"
                 className="mt-1 block w-full px-3 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleNameChange}
               />
               {nameError && <p className="text-red-500 text-xs">{nameError}</p>}
             </div>
@@ -154,7 +233,7 @@ const AuthPage = () => {
               type="email"
               id="email"
               className="mt-1 block w-full px-3 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmailChange}
             />
             {emailError && <p className="text-red-500 text-xs">{emailError}</p>}
           </div>
@@ -169,7 +248,7 @@ const AuthPage = () => {
               type="password"
               id="password"
               className="mt-1 block w-full px-3 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-wine-200 focus:border-wine-200 sm:text-sm"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
             />
             {passwordError && (
               <p className="text-red-500 text-xs">{passwordError}</p>
@@ -194,4 +273,3 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
- */
