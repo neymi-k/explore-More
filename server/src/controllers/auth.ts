@@ -8,6 +8,15 @@ import { ErrorCode } from "../exceptions/root"
 import { SignUpSchema } from "../schema/user"
 import { NotFoundException } from "../exceptions/not-found"
 
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any; 
+  }
+}
+}
+
+
 
 export const signup = async (req:Request,res:Response, next: NextFunction) => {
     SignUpSchema.parse(req.body )
