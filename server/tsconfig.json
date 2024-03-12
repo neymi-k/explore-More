@@ -112,7 +112,7 @@
     "skipLibCheck": true  
                                  /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/types/express.d.ts"],
+  "include": ["src/interfaces/express.d.ts"],
 }
   
   
