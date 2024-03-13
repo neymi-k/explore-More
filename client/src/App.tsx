@@ -1,14 +1,15 @@
-import { useState } from 'react'
 import './App.css'
+import { useState } from 'react'
+import UserCard from './components/users/UserCard'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-     <div className=' bg-red-500'> hola</div>
+    <UserCard />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
