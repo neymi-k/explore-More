@@ -23,16 +23,16 @@ const Card = () => {
 
  return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="w-[500px] h-[120px] p-[20px] px-[15px] py-[20px] rounded-[5px] gap-[17px] bg-gray-400 shadow-md flex flex-row items-start justify-between">
+      <div className="w-[500px] h-[120px] p-[20px] bg-gray-400 shadow-md flex flex-row justify-between m-10 p-5">
         <div className="flex items-center">
-          <img src={userData.avatar} alt="Avatar del usuario" className="w-10 h-10 rounded-full mr-2" />
+          <img src={userData.avatar} alt="Avatar del usuario" className="w-10 h-10 rounded-full mr-2 sm:mr-4" />
           <div className="flex flex-col">
-            <h1>{userData.first_name} {userData.last_name}</h1>
+            <h1 className='font-bold '>{userData.first_name} {userData.last_name}</h1>
             <h2>{userData.email}</h2>
             <h3>{userData.date_of_birth}</h3>
           </div>
         </div>
-        <button className="bg-amber-500 hover:bg-black text-white font-bold py-2 px-4 rounded">
+        <button className="bg-amber-500 hover:bg-black text-white font-bold px-1 rounded m-5 sm:m-5">
           Eliminar
         </button>
       </div>
