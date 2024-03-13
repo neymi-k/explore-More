@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <NavBar />
-      <Footer />
       <AuthPage />
+      <Footer />
     </>
   );
 }
