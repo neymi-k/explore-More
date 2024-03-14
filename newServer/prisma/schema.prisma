@@ -8,8 +8,39 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())  //name field  type field  optional are field modifiers and attrbutes
-  name String
+  id           String          @id @default(uuid()) //name field  type field  optional are field modifiers and attrbutes
+  name         String
+  email        String          @unique
+  password     String
+  role         Role            @default(USER)
+  reservations Resvervations[]
 }
 
+model Resvervations {
+  id               String   @id @default(uuid())
+  date_reservation DateTime @default(now())
+  participants     Int
+  total_price      Float
+  date_trip        DateTime
+  user             User     @relation(fields: [userId], references: [id])
+  userId           String
+  trip             Trips    @relation(fields: [tripId], references: [id])
+  tripId           String
+}
 
+model Trips {
+  id               String          @id @default(uuid())
+  trip_name        Int
+  trip_description Int
+  price            Float
+  img              Bytes
+  places           Int
+  date_trip        DateTime
+  category         String
+  reservation      Resvervations[]
+}
+
+enum Role {
+  ADMIN
+  USER
+}
