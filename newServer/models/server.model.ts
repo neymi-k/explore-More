@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import { skillRoutes } from '../routes/skill.routes';
+import { tripRoutes } from '../routes/trip.routes.ts';
 import { authRoutes } from '../routes/auth.routes';
 import { userRoutes } from '../routes/user.routes';
 

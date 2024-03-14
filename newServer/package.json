@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon script.ts"
+    "devStart": "nodemon connection/db.client.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
