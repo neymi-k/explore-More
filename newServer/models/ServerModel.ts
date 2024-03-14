@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import { tripRoutes } from '../routes/trip.routes.js';
-import { authRoutes } from '../routes/auth.routes.js';
-import { userRoutes } from '../routes/user.routes.js';
+import { tripRoutes } from '../routes/TripRoutes.js';
+import { authRoutes } from '../routes/AuthRoutes.js';
+import { userRoutes } from '../routes/UserRoutes.js';
 
 export class Server {
     private port?: number;
