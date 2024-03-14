@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; /* 
-import AddNewProduct from "../pages/AddNewProduct/index"
-import AdminDashboard from "../pages/AdminDashboard/index" */
+import AddNewProduct from "../pages/AddNewProduct/index" */
+import AdminDashboard from "../pages/AdminDashboard/AdminDashboard" 
 import AuthPage from "../pages/AuthPage/AuthPage";
 /* import Home from "../pages/Home/index"
 import Notfound from "../pages/Notfound/index"
@@ -24,14 +24,14 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      {
+          path: "/admin",
+          element: <AdminDashboard/>
+      },
       /*  
-        {
-            path: "/newproduct",
+      {
+        path: "/newproduct",
             element: <AddNewProduct />
-        },
-        {
-            path: "/admin",
-            element: <AdminDashboard/>
         },
         {
             path: "/productdetail",

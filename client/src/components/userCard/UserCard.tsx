@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Card = () => {
+const UserCard = () => {
  const [userData, setUserData] = useState(null);
 
  useEffect(() => {
@@ -40,4 +40,4 @@ const Card = () => {
  );
 };
 
-export default Card;
+export default UserCard;
