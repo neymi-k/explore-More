@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { log } from 'console'
-const prisma = new PrismaClient({log: ["query"]})
+export const prisma = new PrismaClient({log: ["query"]})
 
 // async function main() {
 //     const users = await prisma.user.create({
