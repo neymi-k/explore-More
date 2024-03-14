@@ -1,14 +1,17 @@
-//import { useState } from "react";
 import "./App.css";
-import AuthPage from "../AuthPage/AuthPage";
+import NavBar from "../../components/NavBar/Navbar";
+import Footer from "../../components/Footer/Footer";
+/* import AuthPage from "../AuthPage/AuthPage"; */
+import { Outlet } from "react-router";
 
 function App() {
   //const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className=" bg-red-500"> hola</div>
-      <AuthPage />
+      <NavBar />
+      <Outlet />
+      <Footer />
     </>
   );
 }

@@ -69,7 +69,7 @@ const AuthPage = () => {
           response = await login(email, password);
           console.log("Usuario logueado:", response);
           setShouldRedirect(true);
-          setRedirectTo("/profile");
+          setRedirectTo("/home");
         } else {
           response = await register(name, email, password);
           console.log("Usuario registrado:", response);
