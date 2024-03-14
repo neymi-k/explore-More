@@ -27,14 +27,14 @@ function NavBar() {
   const logOut = () => {
     AuthService.logout();
     setShowAdminDashboard(false);
-    setCurrentUser(undefined);
+    setCurrentUser(undefined);Adm
   };
 
   return (
-    <nav className="relative flex items-center justify-between p-5 bg-amber-500 gap-20">
+    <nav className="relative flex items-center justify-between p-5 bg-amber-500 gap-10 mb-10">
       <div className="lg:hidden flex justify-between gap-10 w-full">
         <button
-          className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white mr-4"
+          className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -89,7 +89,7 @@ function NavBar() {
         <BsBackpackFill className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-white hover:text-black" />
       </Link>
       <FaCircleUser
-        className="text-9xl sm:text-8xl md:text-7xl lg:text-5xl xl:text-5xl text-white hover:text-black"
+        className="text-8xl sm:text-8xl md:text-8xl lg:text-5xl xl:text-5xl text-white hover:text-black"
         onClick={() => setIsProfileModalOpen(true)}
       />
 
