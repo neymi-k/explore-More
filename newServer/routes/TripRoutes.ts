@@ -10,3 +10,9 @@ TripRouter.route('/:id').put(TripController.updateTrip);
 TripRouter.route('/:id').delete(TripController.deleteTrip);
 
 export default TripRouter  
+
+
+//import { isAdmin } from "../middlewares/SessionMiddleware";
+
+
+
