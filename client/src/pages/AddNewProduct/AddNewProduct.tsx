@@ -1,24 +1,46 @@
 export default function AddNewProduct() {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+      price: formData.get("price"),
+      stock: formData.get("stock"),
+      category: formData.get("category"),
+      image: formData.get("image"),
+    };
+    const response = await fetch("/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert(response.statusText);
+    }
+  };
+
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           ¡Add your own Trip!
         </h2>
-        {/*  <p className="mt-2 text-lg leading-8 text-gray-600">
+        <p className="mt-2 text-lg leading-8 text-gray-600">
           Complete la informacion requerida para poder generar un nuevo producto
           que esté disponible para la venta.
-        </p> */}
+        </p>
       </div>
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
-              htmlFor="produc-name"
+              htmlFor="product-name"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
               Name of your trip
@@ -26,8 +48,8 @@ export default function AddNewProduct() {
             <div className="mt-2.5">
               <input
                 type="text"
-                name="produc-name"
-                id="produc-name"
+                name="product-name"
+                id="product-name"
                 autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
               />
