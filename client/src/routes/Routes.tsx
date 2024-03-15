@@ -7,7 +7,7 @@ import ShoppingCart from "../pages/ShoppingCart/index" */
 import App from "../pages/App";
 import Home from "../pages/Home/Home";
 import MainLayout from "../components/mainLayout/MainLayout";
-import YourProducts from "../pages/YourProduct/YouProducts";
+import YourProducts from "../pages/YourProduct/YourProducts";
 import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([

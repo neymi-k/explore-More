@@ -1,3 +1,6 @@
+import { redirect } from "react-router-dom";
+import { addProduct } from "../../services/product.service";
+
 export default function AddNewProduct() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -7,21 +10,19 @@ export default function AddNewProduct() {
       name: formData.get("name"),
       description: formData.get("description"),
       price: formData.get("price"),
-      stock: formData.get("stock"),
+      places: formData.get("places"),
       category: formData.get("category"),
       image: formData.get("image"),
+      date: formData.get("date"),
     };
-    const response = await fetch("/api/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert(response.statusText);
+
+    try {
+      await addProduct(data);
+      alert("Producto agregado con éxito");
+      redirect("/yourproducts");
+    } catch (error) {
+      alert("Error al agregar el producto");
+      console.error("Error al agregar el producto:", error);
     }
   };
 
@@ -40,16 +41,16 @@ export default function AddNewProduct() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
-              htmlFor="product-name"
+              htmlFor="name"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Name of your trip
+              Title of your trip
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="product-name"
-                id="product-name"
+                name="name"
+                id="name"
                 autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
               />
@@ -82,6 +83,8 @@ export default function AddNewProduct() {
             <div className="mt-2.5">
               <input
                 type="file"
+                name="image"
+                id="image"
                 className="file-input file-input-ghost w-full max-w-xs ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-600"
               />
             </div>
@@ -113,7 +116,7 @@ export default function AddNewProduct() {
             <div className="mt-2.5">
               <select
                 name="category"
-                id=""
+                id="category"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
               >
                 <option disabled selected>
@@ -128,17 +131,17 @@ export default function AddNewProduct() {
 
           <div>
             <label
-              htmlFor="product-price"
+              htmlFor="price"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
               Price
             </label>
             <div className="mt-2.5">
-              <p>$</p>
               <input
                 type="number"
                 name="price"
                 id="price"
+                placeholder="$"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -153,8 +156,8 @@ export default function AddNewProduct() {
             <div className="mt-2.5">
               <input
                 type="number"
-                name="places-available"
-                id="places-available"
+                name="places"
+                id="places"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
               />
             </div>
