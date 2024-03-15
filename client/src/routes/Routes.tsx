@@ -1,5 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"; /* 
-import AddNewProduct from "../pages/AddNewProduct/index"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AddNewProduct from "../pages/AddNewProduct/AddNewProduct"; /*
 import AdminDashboard from "../pages/AdminDashboard/index" */
 import AuthPage from "../pages/AuthPage/AuthPage";
 /* import Home from "../pages/Home/index"
@@ -25,15 +25,15 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
-    {
+      {
         path: "/yourproducts",
-        element: <YourProducts />
-    }
+        element: <YourProducts />,
+      },
+      {
+        path: "/newproduct",
+        element: <AddNewProduct />,
+      },
       /*  
-        {
-            path: "/newproduct",
-            element: <AddNewProduct />
-        },
         {
             path: "/admin",
             element: <AdminDashboard/>
