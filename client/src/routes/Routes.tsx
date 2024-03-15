@@ -1,16 +1,14 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import AddNewProduct from "../pages/AddNewProduct/AddNewProduct";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
-import AuthPage from "../pages/AuthPage/AuthPage";
-/* import Home from "../pages/Home/index"
-import Notfound from "../pages/Notfound/index"
+import AuthPage from "../pages/AuthPage/AuthPage"; /*
 import ProductPage from "../pages/ProductPage/index"
 import ShoppingCart from "../pages/ShoppingCart/index" */
-/* import MainLayout from "../components/mainLayout/MainLayout"; */
 import App from "../pages/App";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 import MainLayout from "../components/mainLayout/MainLayout";
 import YourProducts from "../pages/YourProduct/YouProducts";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +35,10 @@ export const router = createBrowserRouter([
         path: "/admin",
         element: <AdminDashboard />,
       },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
       /*
         {
             path: "/productdetail",
@@ -45,11 +47,7 @@ export const router = createBrowserRouter([
         {
             path: "/shoppingcart",
             element: <ShoppingCart />
-        },
-        {
-            path: "/contact",
-            element: <Notfound />
-        
+        }
         */
     ],
   },

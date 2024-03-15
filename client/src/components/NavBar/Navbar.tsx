@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../assets/logo_explore_more.png";
 import { BsBackpackFill } from "react-icons/bs";
 import { FaCircleUser } from "react-icons/fa6";
@@ -27,7 +27,7 @@ function NavBar() {
   const logOut = () => {
     AuthService.logout();
     setShowAdminDashboard(false);
-    setCurrentUser(undefined);Adm
+    setCurrentUser(undefined);
   };
 
   return (
@@ -62,7 +62,7 @@ function NavBar() {
             Home
           </Link>
           <Link
-            to="#contact"
+            to="/contact"
             className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200"
           >
             Contact
@@ -71,7 +71,7 @@ function NavBar() {
             to="/newproduct"
             className="text-orange px-2 flex-grow hover:text-white transform hover:scale-110 transition-transform duration-200"
           >
-            Add Product
+            Add Trip
           </Link>
         </div>
         <img src={logo} alt="Logo" className="w-24 h-50" />
