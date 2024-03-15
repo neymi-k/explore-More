@@ -10,6 +10,7 @@ import ShoppingCart from "../pages/ShoppingCart/index" */
 import App from "../pages/App";
 import Home from "../pages/Home";
 import MainLayout from "../components/mainLayout/MainLayout";
+import YourProducts from "../pages/YourProduct/YouProducts";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+    {
+        path: "/yourproducts",
+        element: <YourProducts />
+    }
       /*  
         {
             path: "/newproduct",
@@ -44,11 +49,6 @@ export const router = createBrowserRouter([
         {
             path: "/contact",
             element: <Notfound />
-        },
-        {
-            path: "/yourproducts",
-            element: <YourProducts />
-        }
         
         */
     ],
