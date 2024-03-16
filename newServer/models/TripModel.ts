@@ -1,32 +1,77 @@
 import { prisma } from "../connection/db.client";
+import { Request, Response } from "express";
 
 const TripModel = {
     getAllTrips: async () => {
-        const [result] = await prisma.;
+        const result = await prisma.trips.findMany()
         return result;
     },
-    getTrip: async (id: string) => {
-        const [result] = await prisma.query(`SELECT * FROM products WHERE product_id = ?`, [id]);
-        return result;
-    },
-    createTrip: async (product_name: string, price: string, stock_quantity: number, category_id: number) => {
-        const [result] = await prisma.query(`INSERT INTO products (product_name, price, stock_quantity, category_id) VALUES ('${product_name}', '${price}', '${stock_quantity}','${category_id}')`);
-        return result;
-    },
-    // updateProduct: async (id: string, product_name: string, price: number, stock_quantity: number, category_id: number) => {
-    //     const [result] = await prisma.query(`UPDATE products SET product_name = '${product_name}', price = '${price}', stock_quantity = ${stock_quantity}, category_id = ${category_id} WHERE product_id = ?`,[id]);
-    //     return result;
-    // },
-    updateTrip: async (id: string, product_name: string, price: number, stock_quantity: number, category_id: number) => {
-        const [result] = await prisma.query('UPDATE products SET product_name = ?, price = ?, stock_quantity = ?, category_id = ? WHERE product_id = ?', [product_name, price, stock_quantity, category_id, id]);
-        return result;
-    },
-    
-    deleteTrip: async (id: string) => {
-        const [result] = await prisma.query(`DELETE FROM products WHERE product_id = ?`,[id]);
+    getTrip: async (req:Request,res: Response) => {
+        const result = await prisma.trips.findMany({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        });
         return result;
     },
 
+    createTrip: async ( trip_name: string, trip_description:string, price: number, places: number, category: string, img: string,date_trip: string) => {
+        const result = await prisma.trips.create({
+            data:  {
+              trip_name,
+              trip_description,
+              price,
+              places,
+              img,
+              date_trip,
+              category,    
+            }
+          })
+    },
+    updateTrip: async (req:Request,res: Response) => {
+        const result = await prisma.trips.update({
+            where: {
+                id: Number(req.params.id),
+            },
+            data: req.body,
+        });
+    
+        return res.json(result)
+    },
+    
+
+    // router.patch("/products/:id", async (req, res) => {
+    //     try {
+    //         const product = await prisma.product.update({
+    //             where: {
+    //                 id: Number(req.params.id),
+    //             },
+    //             data: req.body,
+    //             include: {
+    //                 category: true,
+    //             },
+    //         });
+    //         res.json(product);
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // });
+
+
+
+
+
+
+
+
+    deleteTrip: async (req:Request,res:Response) => {
+        const result = await prisma.trips.delete({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+       return result
+    },
 }
 
 export default TripModel;

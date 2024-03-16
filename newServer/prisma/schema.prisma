@@ -7,37 +7,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           String          @id @default(uuid()) //name field  type field  optional are field modifiers and attrbutes
-  name         String
-  email        String          @unique
-  password     String
-  role         Role            @default(USER)
-  reservations Resvervations[]
+model Users {
+  id          Int            @id @default(autoincrement()) //name field  type field  optional are field modifiers and attrbutes
+  name        String
+  email       String         @unique
+  password    String
+  role        Role           @default(USER)
+  reservation Reservations[]
 }
 
-model Resvervations {
-  id               String   @id @default(uuid())
+model Reservations {
+  id               Int      @id @default(autoincrement())
   date_reservation DateTime @default(now())
   participants     Int
   total_price      Float
-  date_trip        DateTime
-  user             User     @relation(fields: [userId], references: [id])
-  userId           String
+  user             Users    @relation(fields: [userId], references: [id])
+  userId           Int
   trip             Trips    @relation(fields: [tripId], references: [id])
-  tripId           String
+  tripId           Int
 }
 
 model Trips {
-  id               String          @id @default(uuid())
-  trip_name        Int
-  trip_description Int
+  id               Int            @id @default(autoincrement())
+  trip_name        String
+  trip_description String
   price            Float
-  img              Bytes
+  img              String
   places           Int
-  date_trip        DateTime
+  date_trip        String
   category         String
-  reservation      Resvervations[]
+  reservation      Reservations[]
 }
 
 enum Role {

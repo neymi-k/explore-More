@@ -1,9 +1,11 @@
 import Router from "express";
-import { UserController } from "../controllers/UserController";
-import { isAdmin } from "../middlewares/SessionMiddleware";
+import  UserController  from "../controllers/UserController";
+//import { isAdmin } from "../middlewares/SessionMiddleware";
 
-export const userRoutes = Router();
+const UserRoutes = Router();
 
-userRoutes.route("/").get(isAdmin, UserController.getAllUsers);
+//UserRoutes.route("/").get(isAdmin, UserController.getAllUsers);
+UserRoutes.route("/").get(UserController.getAllUsers);
 
 
+export default UserRoutes

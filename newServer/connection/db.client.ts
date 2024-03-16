@@ -1,26 +1,31 @@
 import { PrismaClient } from '@prisma/client'
 import { log } from 'console'
-export const prisma = new PrismaClient({log: ["query"]})
+//export const prisma = new PrismaClient({log: ["query"]})
+export const prisma = new PrismaClient()
 
 // async function main() {
-//     const users = await prisma.user.create({
+//     const trip = await prisma.trips.create({
 //       data:  {
-//         name: "Betty",
-//         email: "bety@yahoo.com",
-//         password: "abc123",
-//         role: "USER"
+//         trip_name: "San Sebastion",
+//         trip_description: "Beach walk",
+//         price: 140,
+//         places: 12,
+//         img: "url",
+//         date_trip: new Date(),
+//         category: "easy"
+        
 //       }
 //     })
-//     console.log(users)
+//     console.log(trip)
 // }
 
 async function main() {
-    const user = await prisma.user.findMany({
+    const user = await prisma.users.findMany({
       where: {
       name:  "Betty"
      },
   })
-    console.log(user)
+  //  console.log(user)
 }
 
 
