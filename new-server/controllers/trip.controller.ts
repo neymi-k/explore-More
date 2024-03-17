@@ -1,5 +1,5 @@
 import {Request,Response} from 'express'
-import TripModel from '../models/TripModel'
+import TripModel from '../models/trip.model'
 import { any, string } from 'zod';
 
 const TripController = {

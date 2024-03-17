@@ -1,6 +1,6 @@
 import express from "express"
-import TripRouter from './routes/TripRoutes'
-import UserRouter from './routes/UserRoutes'
+import tripRoutes from './routes/trip.routes'
+import userRoutes from './routes/user.routes'
 // import ReservationRouter from './routes/ReservationsRoutes'
 import dotenv from "dotenv";
 
@@ -11,8 +11,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use('/trips/', TripRouter)
-app.use('/users/', UserRouter)
+app.use('/trips/', tripRoutes)
+app.use('/users/', userRoutes)
 // app.use('/reservations/', ReservationRouter)
 
 app.listen(port, () => {
@@ -21,4 +21,4 @@ app.listen(port, () => {
 
 
 //export default {TripRouter,UserRouter, ReservationRouter}
-export default {TripRouter,UserRouter}
+export default {tripRoutes,userRoutes}
