@@ -49,7 +49,7 @@ const TripController = {
             return res.status(400).json({ message: 'Please provide all trip details' });
         }
 
-        (await TripModel.createTrip(trip_name, trip_description, price, places, category, img, date_trip));
+        (await TripModel.createTrip(req, res));
     },
     updateTrip: async (req: Request, res: Response) => {    
         const id = req.params.id;

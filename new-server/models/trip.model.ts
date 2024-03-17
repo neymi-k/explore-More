@@ -15,18 +15,34 @@ const TripModel = {
         return result;
     },
 
-    createTrip: async ( trip_name: string, trip_description:string, price: number, places: number, category: string, img: string,date_trip: string) => {
+    createTrip: async (req:Request,res: Response ) => {
         const result = await prisma.trips.create({
-            data:  {
-              trip_name,
-              trip_description,
-              price,
-              places,
-              img,
-              date_trip,
-              category,    
-            }
+            data:  req.body
           })
+          res.json(result)
+
+        //   router.post("/products", async (req, res) => {
+        //     try {
+        //         const product = await prisma.product.create({
+        //             data: req.body,
+        //         });
+        //         res.json(product);
+        //     } catch (error) {
+        //         next(error);
+        //     }
+        // });
+        
+
+
+
+
+
+
+
+
+
+
+
     },
     updateTrip: async (req:Request,res: Response) => {
         const result = await prisma.trips.update({
