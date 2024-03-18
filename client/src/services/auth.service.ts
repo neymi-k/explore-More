@@ -8,9 +8,14 @@ export const fetchUsers = async () => {
   return response.data;
 };
 
-export const register = (username: string, email: string, password: string) => {
-  return axios.post(API_URL + "signup", { username, email, password });
+export const register = (name: string, email: string, password: string) => {
+  return axios.post(API_URL + "signup", { name, email, password });
 };
+
+
+
+
+
 
 export const login = async (email: string, password: string) => {
   return axios.post(API_URL + "login", { email, password }).then((response) => {

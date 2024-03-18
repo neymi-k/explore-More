@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id          Int            @id @default(autoincrement()) //name field  type field  optional are field modifiers and attrbutes
+  name        String
+  email       String         @unique
+  password    String
+  role        Role           @default(USER)
+  reservation Reservations[]
+}
+
+model Reservations {
+  id               Int      @id @default(autoincrement())
+  date_reservation DateTime @default(now())
+  participants     Int
+  total_price      Float
+  user             Users    @relation(fields: [userId], references: [id])
+  userId           Int
+  trip             Trips    @relation(fields: [tripId], references: [id])
+  tripId           Int
+}
+
+model Trips {
+  id               Int            @id @default(autoincrement())
+  trip_name        String
+  trip_description String
+  price            Float
+  img              String
+  places           Int
+  date_trip        String
+  category         String
+  reservation      Reservations[]
+}
+
+enum Role {
+  ADMIN
+  USER
+}
