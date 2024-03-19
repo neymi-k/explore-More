@@ -20,8 +20,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use("/trips/", tripRoutes);
-app.use("/users/", userRoutes);
+app.use("/trips", tripRoutes);
+app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
 
 // app.use('/reservations/', ReservationRouter)
