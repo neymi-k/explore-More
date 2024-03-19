@@ -1,23 +1,23 @@
-import { PrismaClient } from '@prisma/client'
-import { log } from 'console'
+import { PrismaClient } from "@prisma/client";
+import { log } from "console";
 //export const prisma = new PrismaClient({log: ["query"]})
-export const prisma = new PrismaClient()
+export const prisma = new PrismaClient();
 
-// async function main() {
-//     const trip = await prisma.trips.create({
-//       data:  {
-//         trip_name: "San Sebastion",
-//         trip_description: "Beach walk",
-//         price: 140,
-//         places: 12,
-//         img: "url",
-//         date_trip: new Date(),
-//         category: "easy"
-        
-//       }
-//     })
-//     console.log(trip)
-// }
+async function main() {
+  const trip = await prisma.trips.create({
+    data: {
+      trip_name: "San Sebastion",
+      trip_description: "Beach walk",
+      price: 140,
+      places: 12,
+      img: "url",
+      date_trip: "20/2/2024",
+      category: "EASY",
+      user_id: 1,
+    },
+  });
+  console.log(trip);
+}
 
 // async function main() {
 //     const user = await prisma.users.findMany({
@@ -25,16 +25,13 @@ export const prisma = new PrismaClient()
 //       name:  "Betty"
 //      },
 //   })
-  //  console.log(user)
+//  console.log(user)
 // }
 
-
-
-// main()
-//     .catch(e => {
-//         console.error(e.message)
-//     })
-//     .finally(async () => {
-//         await prisma.$disconnect
-//     })
-
+main()
+  .catch((e) => {
+    console.error(e.message);
+  })
+  .finally(async () => {
+    await prisma.$disconnect;
+  });

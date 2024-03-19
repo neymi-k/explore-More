@@ -13,6 +13,7 @@ model Users {
   email       String         @unique
   password    String
   role        Role           @default(USER)
+  trips       Trips[]
   reservation Reservations[]
 }
 
@@ -35,11 +36,19 @@ model Trips {
   img              String
   places           Int
   date_trip        String
-  category         String
+  category         Category @default(EASY)
+  user             Users    @relation(fields: [user_id], references: [id])
+  user_id          Int
   reservation      Reservations[]
 }
 
 enum Role {
   ADMIN
   USER
+}
+
+enum Category {
+  EASY
+  MEDIUM 
+  EXTREME
 }
