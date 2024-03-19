@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /* const API_URL = "https://jsonplaceholder.typicode.com/api/";
- */ const API_URL = "https://localhost:3306/";
+ */ const API_URL = "https://localhost:3001/";
 
 export const fetchProducts = async () => {
   const response = await axios.get(API_URL + "trips");
@@ -25,7 +25,8 @@ export const fetchProductsBySeller = async (userId: number) => {
 
 export const addProduct = async (data: any) => {
   try {
-    const response = await axios.post("/api/trips", data);
+    //query params ?userId=${data.id}
+    const response = await axios.post(`/trips/${data.id}`, data);
     return response.data;
   } catch (error) {
     console.error("Error al agregar el producto:", error);

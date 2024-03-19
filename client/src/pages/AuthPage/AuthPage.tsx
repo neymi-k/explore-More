@@ -35,7 +35,7 @@ const AuthPage = () => {
       setEmailError("");
     }
 
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    /*    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     if (!passwordRegex.test(password)) {
       setPasswordError(
         "La contraseña debe tener al menos 6 caracteres, contener al menos una mayúscula, una minúscula y un número."
@@ -43,7 +43,7 @@ const AuthPage = () => {
       isValid = false;
     } else {
       setPasswordError("");
-    }
+    } */
 
     return isValid;
   };

@@ -3,21 +3,18 @@ import { prisma } from "../connection/db.client";
 import { Request } from "express";
 import jwt from "jsonwebtoken";
 
+const secret = process.env.JWT_SECRET as string;
+
 const AuthModel = {
-  registerUser: async (
-    name: string,
-    email: string,
-    password: string,
-    role: any
-  ) => {
-    const hashedPassword = await bcrypt.hash(password, 10);
+  registerUser: async (userData: any) => {
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
 
     const result = await prisma.users.create({
       data: {
-        name,
-        email,
+        name: userData.name,
+        email: userData.email,
         password: hashedPassword,
-        role,
+        role: userData.role,
       },
     });
 
@@ -40,7 +37,7 @@ const AuthModel = {
       throw new Error("Contraseña incorrecta");
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id }, secret, {
       expiresIn: "1h",
     });
 

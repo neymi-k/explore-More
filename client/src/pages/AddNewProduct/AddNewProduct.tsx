@@ -4,8 +4,11 @@ import { addProduct } from "../../services/product.service";
 export default function AddNewProduct() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //completar
+    const id = localStorage.user.id;
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
+
     const data = {
       name: formData.get("name"),
       description: formData.get("description"),

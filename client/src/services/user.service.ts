@@ -1,7 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://jsonplaceholder.typicode.com/api/";
+/* const API_URL = "https://jsonplaceholder.typicode.com/api/";
+ */
+const API_URL = "https://localhost:3001/";
 
 export const getPubliContent = async () => {
   const response = await axios.get(API_URL + "all");
