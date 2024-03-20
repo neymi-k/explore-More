@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import AddNewProduct from "../pages/AddNewProduct/AddNewProduct";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import AuthPage from "../pages/AuthPage/AuthPage"; /*
@@ -6,7 +6,6 @@ import ProductPage from "../pages/ProductPage/index"
 import ShoppingCart from "../pages/ShoppingCart/index" */
 import App from "../pages/App";
 import Home from "../pages/Home/Home";
-import MainLayout from "../components/mainLayout/MainLayout";
 import YourProducts from "../pages/YourProduct/YourProducts";
 import Contact from "../pages/Contact/Contact";
 
@@ -17,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <MainLayout />,
+        element: <Navigate to="/login" />,
       },
       {
         path: "/home",

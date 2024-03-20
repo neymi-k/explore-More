@@ -1,11 +1,13 @@
 import React from "react";
 import Avatar from "react-avatar";
+import { deleteUsers } from "../../services/user.service";
 
 interface UserCardProps {
   user: {
     avatar?: string;
     name: string;
     email: string;
+    id: number;
   };
 }
 
@@ -13,6 +15,11 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
   if (!user) {
     return <div>Obteniendo Información</div>;
   }
+  const handleDelete = () => {
+    deleteUsers(user.id).then(() => {
+      window.location.reload();
+    });
+  };
 
   return (
     <div className="flex justify-center items-center">
@@ -23,7 +30,10 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
           <h2>{user.email}</h2>
         </div>
 
-        <button className="bg-amber-500 hover:bg-black text-white font-bold px-3 py-1 m-5 rounded-md">
+        <button
+          className="bg-amber-500 hover:bg-black text-white font-bold px-3 py-1 m-5 rounded-md"
+          onClick={handleDelete}
+        >
           Eliminar
         </button>
       </div>
