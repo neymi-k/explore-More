@@ -10,6 +10,17 @@ export const fetchUsers = async () => {
   return response.data;
 };
 
+export const deleteUsers = async (id: number) => {
+  try {
+    const response = await axios.delete(API_URL + "users/" + id);
+    console.log("Usuario eliminado", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error al borrar el usuario:", error);
+    throw error;
+  }
+};
+
 //rutas por permisos
 export const getPubliContent = async () => {
   const response = await axios.get(API_URL + "all");
