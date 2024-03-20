@@ -31,4 +31,4 @@ app.listen(port, () => {
 });
 
 //export default {TripRouter,UserRouter, ReservationRouter}
-export default { tripRoutes, userRoutes };
+//export default { tripRoutes, userRoutes };
