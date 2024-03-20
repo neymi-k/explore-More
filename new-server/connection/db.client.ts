@@ -3,7 +3,7 @@ import { log } from "console";
 //export const prisma = new PrismaClient({log: ["query"]})
 export const prisma = new PrismaClient();
 
-async function main() {
+/* async function main() {
   const trip = await prisma.trips.create({
     data: {
       trip_name: "San Sebastion",
@@ -17,7 +17,7 @@ async function main() {
     },
   });
   console.log(trip);
-}
+} */
 
 // async function main() {
 //     const user = await prisma.users.findMany({
@@ -28,10 +28,10 @@ async function main() {
 //  console.log(user)
 // }
 
-main()
+/* main()
   .catch((e) => {
     console.error(e.message);
   })
   .finally(async () => {
     await prisma.$disconnect;
-  });
+  }); */
