@@ -5,8 +5,8 @@ export default function AddNewProduct() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     //completar
-    const id = localStorage.user.id;
-    const form = event.target as HTMLFormElement;
+    /*     const id = localStorage.user.id;
+     */ const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
     const data = {

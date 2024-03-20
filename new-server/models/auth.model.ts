@@ -27,7 +27,6 @@ const AuthModel = {
         email,
       },
     });
-
     if (!user) {
       throw new Error("Usuario no encontrado");
     }

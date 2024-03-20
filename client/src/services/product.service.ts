@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /* const API_URL = "https://jsonplaceholder.typicode.com/api/";
- */ const API_URL = "https://localhost:3001/";
+ */ const API_URL = "http://localhost:3001/";
 
 export const fetchProducts = async () => {
   const response = await axios.get(API_URL + "trips");
@@ -15,7 +15,7 @@ export const fetchProduct = async (id: number) => {
 
 export const fetchProductsBySeller = async (userId: number) => {
   try {
-    const response = await axios.get(`${API_URL}trips/${userId}`);
+    const response = await axios.get(`${API_URL}trips/seller/${userId}`);
     return response.data;
   } catch (error) {
     console.error("Error al encontrar los productos por vendedor:", error);

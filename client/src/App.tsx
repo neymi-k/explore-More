@@ -1,4 +1,4 @@
-import './App.css'
+/* import './App.css'
 import { useState } from 'react'
 import UserCard from './components/userCard/UserCard'
 
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; */
