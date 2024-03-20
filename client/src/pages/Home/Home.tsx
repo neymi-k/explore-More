@@ -1,5 +1,6 @@
 import React from "react";
 import Info from "../../components/info/info";
+import TravelCard from "../../components/TravelCard/TravelCard"
 
 interface HomeProps {}
 
@@ -11,9 +12,8 @@ const Home: React.FC<HomeProps> = () => {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Home
         </h1>
-        <div>
-          <Info />
-        </div>
+        <div><TravelCard /></div>
+        <div><Info /></div>
       </section>
     </div>
   );
