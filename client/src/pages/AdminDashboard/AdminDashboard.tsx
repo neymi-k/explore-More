@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import UserCard from "../../components/userCard/UserCard";
 import { fetchUsers } from "../../services/user.service";
+import { Navigate, useNavigate } from "react-router-dom";
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
 interface User {
   id: number;
@@ -9,8 +11,30 @@ interface User {
   password: string;
 }
 
+interface CustomJwtPayload extends JwtPayload {
+  role: string;
+}
+
 const AdminDashboard = () => {
+  const token = localStorage.getItem("user");
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    } else {
+      const decodedToken = jwtDecode<CustomJwtPayload>(token);
+      if (decodedToken.role !== "admin") {
+        navigate("/home");
+      }
+    }
+  }, [token, navigate]);
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
   useEffect(() => {
     fetchUsers().then((data) => setUsers(data));

@@ -1,9 +1,18 @@
-import { useState, useCallback, ChangeEvent } from "react";
+import { useEffect, useState, useCallback, ChangeEvent } from "react";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { login, register } from "../../services/auth.service";
 
 const AuthPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
+
   const [isLogin, setIsLogin] = useState(true);
 
   const [email, setEmail] = useState("");
@@ -62,14 +71,14 @@ const AuthPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (validateForm()) {
       try {
         let response;
         if (isLogin) {
           response = await login(email, password);
           console.log("Usuario logueado:", response);
-          setShouldRedirect(true);
-          setRedirectTo("/home");
+          navigate("/home");
         } else {
           response = await register(name, email, password);
           console.log("Usuario registrado:", response);
