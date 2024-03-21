@@ -1,4 +1,4 @@
-export default function authHeader() {
+/* export default function authHeader() {
   const userStr = localStorage.getItem("user");
   let user = null;
   if (userStr) user = JSON.parse(userStr);
@@ -9,3 +9,4 @@ export default function authHeader() {
     return { "x-access-token": null };
   }
 }
+ */
