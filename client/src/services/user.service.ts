@@ -1,6 +1,6 @@
 import axios from "axios";
-import authHeader from "./auth-header";
-
+/* import authHeader from "./auth-header";
+ */
 /* const API_URL = "https://jsonplaceholder.typicode.com/api/";
  */
 const API_URL = "http://localhost:3001/";
@@ -22,7 +22,7 @@ export const deleteUsers = async (id: number) => {
 };
 
 //rutas por permisos
-export const getPubliContent = async () => {
+/* export const getPubliContent = async () => {
   const response = await axios.get(API_URL + "all");
   return response.data;
 };
@@ -37,4 +37,4 @@ export const getAdminDashboard = async () => {
     headers: authHeader(),
   });
   return response.data;
-};
+}; */

@@ -17,7 +17,9 @@ function NavBar() {
       const user = await AuthService.getCurrentUser();
       if (user) {
         setCurrentUser(user);
-        setShowAdminDashboard(user.roles.includes("ROLE_ADMIN"));
+        if (user.userData.role.includes("ADMIN")) {
+          setShowAdminDashboard(true);
+        }
       }
     };
 
