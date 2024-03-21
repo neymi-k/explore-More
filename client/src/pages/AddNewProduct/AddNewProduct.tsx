@@ -1,12 +1,13 @@
 import { redirect } from "react-router-dom";
 import { addProduct } from "../../services/product.service";
+import { getCurrentUser } from "../../services/auth.service";
 
 export default function AddNewProduct() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    //completar
-    /*     const id = localStorage.user.id;
-     */ const form = event.target as HTMLFormElement;
+
+    const id = await getCurrentUser();
+    const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
     const data = {
@@ -17,8 +18,9 @@ export default function AddNewProduct() {
       category: formData.get("category"),
       image: formData.get("image"),
       date: formData.get("date"),
+      user_id: id.userData.id,
     };
-
+    console.log(data);
     try {
       await addProduct(data);
       alert("Producto agregado con éxito");

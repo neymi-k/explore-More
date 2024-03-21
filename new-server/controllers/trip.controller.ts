@@ -82,7 +82,6 @@ const TripController = {
       !price ||
       !places ||
       !category ||
-      !img ||
       !date_trip
     ) {
       return res
@@ -94,22 +93,14 @@ const TripController = {
   },
   updateTrip: async (req: Request, res: Response) => {
     const id = req.params.id;
-    const {
-      trip_name,
-      trip_description,
-      places,
-      price,
-      category,
-      img,
-      date_trip,
-    } = req.body;
+    const { trip_name, trip_description, places, price, category, date_trip } =
+      req.body;
     if (
       !trip_name ||
       !trip_description ||
       !price ||
       !places ||
       !category ||
-      !img ||
       !date_trip
     ) {
       res.status(400).json({ message: "Please provide all trip details" });

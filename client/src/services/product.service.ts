@@ -26,7 +26,7 @@ export const fetchProductsBySeller = async (userId: number) => {
 export const addProduct = async (data: any) => {
   try {
     //query params ?userId=${data.id}
-    const response = await axios.post(`/trips/${data.id}`, data);
+    const response = await axios.post(`/trips`, data);
     return response.data;
   } catch (error) {
     console.error("Error al agregar el producto:", error);

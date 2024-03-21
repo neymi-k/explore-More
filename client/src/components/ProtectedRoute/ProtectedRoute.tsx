@@ -12,8 +12,8 @@ const ProtectedRoute = () => {
     return <Navigate to="/login" />;
   }
 
-  const userData = JSON.parse(storedData);
-  const token = userData?.token;
+  const localData = JSON.parse(storedData);
+  const token = localData?.token;
   console.log(token);
 
   if (!token) {
@@ -21,8 +21,12 @@ const ProtectedRoute = () => {
   }
 
   const decodedToken = jwtDecode<CustomJwtPayload>(token);
-  if (decodedToken.role !== "user") {
-    return <Navigate to="/login" />;
+  if (decodedToken.role === "ADMIN") {
+    return <Navigate to="/home" />;
+  }
+
+  if (decodedToken.role === "USER") {
+    return <Navigate to="/home" />;
   }
 
   return <Outlet />;
